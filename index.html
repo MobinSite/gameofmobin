@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>داش مبین</title>
+<title>چالش مخفی داش مبین</title>
 
 <style>
 
@@ -15,25 +15,20 @@
     padding: 0;
 }
 
-html, body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
 body {
-    background: #000;
-    color: #00ff41;
-    font-family: Consolas, monospace;
+    min-height: 100vh;
+    background: #050505;
+    color: white;
+    font-family: Tahoma, Arial, sans-serif;
+    overflow-x: hidden;
 }
 
-/* =========================
-   صفحه اصلی
-========================= */
 
-#home {
-    width: 100%;
-    height: 100vh;
+/* صفحه اصلی */
+
+#main {
+    min-height: 100vh;
+    padding: 40px 20px;
 
     display: flex;
     justify-content: center;
@@ -41,325 +36,242 @@ body {
 
     background:
         radial-gradient(
-            circle,
-            #102010 0%,
-            #020502 45%,
-            #000 80%
+            circle at center,
+            #102010,
+            #050505 60%,
+            #000
         );
 }
 
-.main-box {
-    text-align: center;
+.container {
+    width: 700px;
+    max-width: 95%;
 
-    padding: 50px;
+    padding: 35px;
+
+    background: rgba(0,0,0,0.85);
 
     border: 1px solid #00ff41;
     border-radius: 20px;
 
-    background: rgba(0,0,0,0.8);
-
     box-shadow:
-        0 0 20px #00ff41,
-        inset 0 0 30px rgba(0,255,65,0.1);
+        0 0 30px rgba(0,255,65,0.25);
 }
 
-.title {
-    font-size: 65px;
+h1 {
+    text-align: center;
 
     color: #00ff41;
 
+    font-size: 40px;
+
+    margin-bottom: 10px;
+
     text-shadow:
-        0 0 10px #00ff41,
-        0 0 30px #00ff41,
-        0 0 60px #00ff41;
+        0 0 15px #00ff41;
+}
+
+.intro {
+    text-align: center;
+
+    color: #aaa;
+
+    margin-bottom: 35px;
+}
+
+
+/* مراحل */
+
+.step {
+    display: none;
+
+    padding: 25px;
+
+    border: 1px solid #222;
+
+    border-radius: 15px;
+
+    background: #090909;
+
+    margin-bottom: 20px;
+}
+
+.step.active {
+    display: block;
+}
+
+.step h2 {
+    color: #00ff41;
 
     margin-bottom: 15px;
 }
 
-.subtitle {
-    color: #aaa;
-    font-size: 18px;
-    margin-bottom: 35px;
-}
+.step p {
+    line-height: 2;
 
-#secretBtn {
-    padding: 15px 50px;
-
-    background: transparent;
-
-    border: 2px solid #00ff41;
-    border-radius: 10px;
-
-    color: #00ff41;
-
-    font-family: monospace;
-    font-size: 22px;
-
-    cursor: pointer;
-
-    transition: 0.3s;
-}
-
-#secretBtn:hover {
-    background: #00ff41;
-    color: #000;
-
-    box-shadow:
-        0 0 15px #00ff41,
-        0 0 40px #00ff41;
-
-    transform: scale(1.08);
-}
-
-
-/* =========================
-   صفحه هکری
-========================= */
-
-#hackPage {
-    display: none;
-
-    position: relative;
-
-    width: 100%;
-    height: 100vh;
-
-    background: #000;
-
-    overflow: hidden;
-}
-
-#matrix {
-    position: absolute;
-
-    left: 0;
-    top: 0;
-
-    width: 100%;
-    height: 100%;
-}
-
-
-/* =========================
-   فلش قرمز
-========================= */
-
-#redFlash {
-    position: absolute;
-
-    inset: 0;
-
-    background: red;
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    z-index: 20;
-}
-
-
-/* =========================
-   محتوای وسط
-========================= */
-
-#center {
-    position: absolute;
-
-    inset: 0;
-
-    display: flex;
-    flex-direction: column;
-
-    justify-content: center;
-    align-items: center;
-
-    z-index: 10;
-
-    text-align: center;
-
-    pointer-events: none;
-}
-
-
-/* =========================
-   درصد هک
-========================= */
-
-#percent {
-    font-size: 55px;
-
-    margin-bottom: 20px;
-
-    text-shadow:
-        0 0 10px #00ff41,
-        0 0 30px #00ff41;
-}
-
-
-/* =========================
-   متن HACKING
-========================= */
-
-#status {
-    font-size: 24px;
+    color: #ddd;
 
     margin-bottom: 20px;
 }
 
 
-/* =========================
-   نوار پیشرفت
-========================= */
+/* دکمه */
 
-.progress-container {
-    width: 500px;
-    max-width: 80vw;
-
-    height: 18px;
+button {
+    padding: 12px 25px;
 
     border: 1px solid #00ff41;
 
+    border-radius: 8px;
+
     background: #001000;
 
-    box-shadow:
-        0 0 10px #00ff41;
+    color: #00ff41;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    transition: 0.25s;
 }
 
-#progress {
-    width: 0%;
-
-    height: 100%;
-
+button:hover {
     background: #00ff41;
+
+    color: black;
 
     box-shadow:
         0 0 15px #00ff41;
 
-    transition: width 0.1s;
+    transform: scale(1.03);
 }
 
 
-/* =========================
-   ترمینال
-========================= */
+/* ورودی */
 
-#terminal {
-    position: absolute;
+input {
+    width: 100%;
 
-    left: 30px;
-    bottom: 30px;
+    padding: 13px;
 
-    width: 450px;
-    max-width: 85vw;
+    margin-bottom: 15px;
 
-    height: 180px;
+    background: black;
 
-    padding: 15px;
+    color: #00ff41;
 
     border: 1px solid #00ff41;
 
-    background: rgba(0,0,0,0.85);
+    border-radius: 8px;
 
-    box-shadow:
-        0 0 15px rgba(0,255,65,0.3);
+    outline: none;
+
+    font-size: 17px;
+}
+
+
+/* گزینه ها */
+
+.options {
+    display: flex;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+}
+
+.option {
+    flex: 1;
+
+    min-width: 120px;
+}
+
+
+/* پیام */
+
+.message {
+    margin-top: 15px;
+
+    color: #ff4444;
+
+    min-height: 25px;
+}
+
+
+/* مربع مخفی */
+
+#secretBox {
+    width: 70px;
+    height: 70px;
+
+    background: #111;
+
+    border: 1px solid #111;
+
+    cursor: pointer;
+
+    position: absolute;
+}
+
+#boxArea {
+    height: 180px;
+
+    position: relative;
+
+    border: 1px dashed #333;
 
     overflow: hidden;
 
-    font-size: 13px;
-
-    z-index: 15;
-}
-
-.terminal-line {
-    margin-bottom: 7px;
+    background: #020202;
 }
 
 
-/* =========================
-   YOU HACKED
-========================= */
+/* مرحله پایانی */
 
-#hacked {
+#finish {
     display: none;
 
-    position: absolute;
+    min-height: 100vh;
 
-    inset: 0;
-
-    z-index: 30;
+    background: black;
 
     justify-content: center;
+
     align-items: center;
 
     flex-direction: column;
 
-    background: rgba(0,0,0,0.45);
+    text-align: center;
+
+    padding: 20px;
 }
 
-#hacked h1 {
-
+#finish h1 {
     color: red;
 
-    font-size: 80px;
+    font-size: 70px;
+
+    animation: glitch 0.15s infinite;
 
     text-shadow:
         0 0 10px red,
         0 0 30px red,
         0 0 60px red;
-
-    animation: glitch 0.15s infinite;
 }
 
-#joke {
-
+#finish p {
     margin-top: 25px;
 
-    font-size: 40px;
+    font-size: 28px;
 
     color: #00ff41;
 
     text-shadow:
         0 0 15px #00ff41;
-
-    display: none;
 }
 
 
-/* =========================
-   دکمه برگشت
-========================= */
-
-#back {
-
-    margin-top: 30px;
-
-    padding: 12px 35px;
-
-    color: white;
-
-    background: black;
-
-    border: 1px solid white;
-
-    border-radius: 8px;
-
-    font-family: monospace;
-
-    cursor: pointer;
-
-    display: none;
-}
-
-#back:hover {
-    background: white;
-    color: black;
-}
-
-
-/* =========================
-   انیمیشن Glitch
-========================= */
+/* انیمیشن */
 
 @keyframes glitch {
 
@@ -367,20 +279,16 @@ body {
         transform: translate(0);
     }
 
-    20% {
+    25% {
         transform: translate(-5px, 3px);
     }
 
-    40% {
+    50% {
         transform: translate(5px, -3px);
     }
 
-    60% {
+    75% {
         transform: translate(-3px, -2px);
-    }
-
-    80% {
-        transform: translate(3px, 2px);
     }
 
     100% {
@@ -390,28 +298,20 @@ body {
 }
 
 
-/* =========================
-   موبایل
-========================= */
+/* موبایل */
 
 @media(max-width:600px) {
 
-    .title {
-        font-size: 45px;
+    h1 {
+        font-size: 30px;
     }
 
-    #hacked h1 {
-        font-size: 45px;
+    #finish h1 {
+        font-size: 42px;
     }
 
-    #percent {
-        font-size: 40px;
-    }
-
-    #terminal {
-        left: 10px;
-        bottom: 10px;
-        font-size: 11px;
+    #finish p {
+        font-size: 20px;
     }
 
 }
@@ -424,447 +324,438 @@ body {
 
 
 <!-- =========================
-     صفحه اصلی
+     بخش چالش
 ========================= -->
 
-<section id="home">
+<div id="main">
 
-    <div class="main-box">
+    <div class="container">
 
-        <h1 class="title">
-            داش مبین
+        <h1>
+            🕵️ چالش مخفی داش مبین
         </h1>
 
-        <p class="subtitle">
-            سیستم مخفی داش مبین
+        <p class="intro">
+            اگر می‌خوای به پایان برسی،
+            مرحله‌ها رو به ترتیب انجام بده!
         </p>
 
-        <button id="secretBtn">
-            🔐 SECRET
-        </button>
+
+        <!-- مرحله 1 -->
+
+        <div class="step active" id="step1">
+
+            <h2>
+                مرحله ۱
+            </h2>
+
+            <p>
+                روی دکمه زیر کلیک کن تا مرحله اول کامل شود.
+            </p>
+
+            <button onclick="completeStep1()">
+                شروع مرحله
+            </button>
+
+        </div>
+
+
+        <!-- مرحله 2 -->
+
+        <div class="step" id="step2">
+
+            <h2>
+                مرحله ۲
+            </h2>
+
+            <p>
+                کلمه زیر را دقیقاً داخل کادر بنویس:
+            </p>
+
+            <p style="color:#00ff41; font-size:25px;">
+                MOBIN
+            </p>
+
+            <input
+                id="wordInput"
+                placeholder="کلمه را وارد کن..."
+            >
+
+            <button onclick="checkWord()">
+                تأیید
+            </button>
+
+            <div
+                class="message"
+                id="wordMessage">
+            </div>
+
+        </div>
+
+
+        <!-- مرحله 3 -->
+
+        <div class="step" id="step3">
+
+            <h2>
+                مرحله ۳
+            </h2>
+
+            <p>
+                فقط گزینه‌ای را انتخاب کن که نوشته:
+                <b>SECRET</b>
+            </p>
+
+            <div class="options">
+
+                <button
+                    class="option"
+                    onclick="wrongOption()">
+                    NORMAL
+                </button>
+
+                <button
+                    class="option"
+                    onclick="wrongOption()">
+                    SYSTEM
+                </button>
+
+                <button
+                    class="option"
+                    onclick="correctOption()">
+                    SECRET
+                </button>
+
+            </div>
+
+            <div
+                class="message"
+                id="optionMessage">
+            </div>
+
+        </div>
+
+
+        <!-- مرحله 4 -->
+
+        <div class="step" id="step4">
+
+            <h2>
+                مرحله ۴
+            </h2>
+
+            <p>
+                مربع مخفی را پیدا کن و روی آن کلیک کن!
+            </p>
+
+            <div id="boxArea">
+
+                <div id="secretBox"></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- مرحله 5 -->
+
+        <div class="step" id="step5">
+
+            <h2>
+                مرحله آخر
+            </h2>
+
+            <p>
+                همه مراحل با موفقیت انجام شدند.
+                <br>
+                اگر آماده‌ای، روی دکمه پایان بزن.
+            </p>
+
+            <button onclick="finishGame()">
+                🔴 دکمه پایان
+            </button>
+
+        </div>
 
     </div>
 
-</section>
-
+</div>
 
 
 <!-- =========================
-     صفحه هکری
+     پایان
 ========================= -->
 
-<section id="hackPage">
+<div id="finish">
 
-    <canvas id="matrix"></canvas>
+    <h1>
+        YOU HACKED HAHAHA
+    </h1>
 
+    <p>
+        😂 این فقط برای شوخی بود!
+        <br>
+        بوس بوس 😘❤️
+    </p>
 
-    <div id="redFlash"></div>
-
-
-    <div id="center">
-
-        <div id="percent">
-            0%
-        </div>
-
-        <div id="status">
-            INITIALIZING...
-        </div>
-
-        <div class="progress-container">
-
-            <div id="progress"></div>
-
-        </div>
-
-    </div>
-
-
-    <!-- ترمینال -->
-
-    <div id="terminal">
-
-        <div class="terminal-line">
-            &gt; connecting to server...
-        </div>
-
-        <div class="terminal-line">
-            &gt; bypassing firewall...
-        </div>
-
-        <div class="terminal-line">
-            &gt; accessing database...
-        </div>
-
-        <div class="terminal-line">
-            &gt; downloading secrets...
-        </div>
-
-        <div class="terminal-line">
-            &gt; system access granted...
-        </div>
-
-    </div>
-
-
-    <!-- پیام نهایی -->
-
-    <div id="hacked">
-
-        <h1>
-            YOU HACKED
-        </h1>
-
-        <div id="joke">
-            😂 شوخی بود
-        </div>
-
-        <button id="back">
-            ← برگشت
-        </button>
-
-    </div>
-
-</section>
+</div>
 
 
 
 <script>
 
-/* =====================================
-   عناصر صفحه
-===================================== */
 
-const secretBtn =
-    document.getElementById("secretBtn");
+/* مرحله فعلی */
 
-const home =
-    document.getElementById("home");
-
-const hackPage =
-    document.getElementById("hackPage");
-
-const percent =
-    document.getElementById("percent");
-
-const status =
-    document.getElementById("status");
-
-const progress =
-    document.getElementById("progress");
-
-const hacked =
-    document.getElementById("hacked");
-
-const joke =
-    document.getElementById("joke");
-
-const back =
-    document.getElementById("back");
-
-const redFlash =
-    document.getElementById("redFlash");
+let currentStep = 1;
 
 
-/* =====================================
-   صدای تایپ / بوق
-===================================== */
+/* نمایش مرحله بعد */
 
-let audioContext;
+function nextStep(number) {
 
-function beep() {
+    document
+        .getElementById(
+            "step" + currentStep
+        )
+        .classList.remove("active");
+
+
+    currentStep = number;
+
+
+    document
+        .getElementById(
+            "step" + currentStep
+        )
+        .classList.add("active");
+
+}
+
+
+/* =========================
+   مرحله 1
+========================= */
+
+function completeStep1() {
+
+    nextStep(2);
+
+}
+
+
+/* =========================
+   مرحله 2
+========================= */
+
+function checkWord() {
+
+    const input =
+        document.getElementById(
+            "wordInput"
+        );
+
+    const message =
+        document.getElementById(
+            "wordMessage"
+        );
+
+
+    if (
+        input.value.trim().toUpperCase()
+        === "MOBIN"
+    ) {
+
+        message.style.color =
+            "#00ff41";
+
+        message.textContent =
+            "✓ درست بود!";
+
+        setTimeout(() => {
+
+            nextStep(3);
+
+        }, 700);
+
+    }
+
+    else {
+
+        message.style.color =
+            "#ff4444";
+
+        message.textContent =
+            "✗ کلمه اشتباهه! دوباره امتحان کن.";
+
+    }
+
+}
+
+
+/* =========================
+   مرحله 3
+========================= */
+
+function wrongOption() {
+
+    document
+        .getElementById(
+            "optionMessage"
+        )
+        .textContent =
+        "✗ اشتباهه! دوباره انتخاب کن.";
+
+}
+
+
+function correctOption() {
+
+    document
+        .getElementById(
+            "optionMessage"
+        )
+        .style.color =
+        "#00ff41";
+
+
+    document
+        .getElementById(
+            "optionMessage"
+        )
+        .textContent =
+        "✓ گزینه درست پیدا شد!";
+
+
+    setTimeout(() => {
+
+        nextStep(4);
+
+        moveSecretBox();
+
+    }, 700);
+
+}
+
+
+/* =========================
+   مرحله 4
+========================= */
+
+function moveSecretBox() {
+
+    const area =
+        document.getElementById(
+            "boxArea"
+        );
+
+    const box =
+        document.getElementById(
+            "secretBox"
+        );
+
+
+    const maxX =
+        area.clientWidth - 70;
+
+    const maxY =
+        area.clientHeight - 70;
+
+
+    const x =
+        Math.random() * maxX;
+
+    const y =
+        Math.random() * maxY;
+
+
+    box.style.left =
+        x + "px";
+
+    box.style.top =
+        y + "px";
+
+}
+
+
+/* وقتی مربع پیدا شد */
+
+document
+    .getElementById(
+        "secretBox"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+            nextStep(5);
+
+        }
+    );
+
+
+/* =========================
+   پایان
+========================= */
+
+function finishGame() {
+
+    document
+        .getElementById(
+            "main"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "finish"
+        )
+        .style.display =
+        "flex";
+
+
+    /* صدای ساده */
 
     try {
 
-        if (!audioContext) {
-
-            audioContext =
-                new (window.AudioContext ||
-                window.webkitAudioContext)();
-
-        }
+        const audio =
+            new (
+                window.AudioContext ||
+                window.webkitAudioContext
+            )();
 
         const oscillator =
-            audioContext.createOscillator();
+            audio.createOscillator();
 
         const gain =
-            audioContext.createGain();
+            audio.createGain();
 
         oscillator.frequency.value =
-            500 + Math.random() * 500;
+            700;
 
-        oscillator.type = "square";
+        oscillator.type =
+            "square";
 
-        gain.gain.value = 0.025;
+        gain.gain.value =
+            0.03;
 
         oscillator.connect(gain);
 
-        gain.connect(audioContext.destination);
+        gain.connect(
+            audio.destination
+        );
 
         oscillator.start();
 
         oscillator.stop(
-            audioContext.currentTime + 0.04
+            audio.currentTime + 0.3
         );
-
-    } catch(e) {}
-
-}
-
-
-/* =====================================
-   شروع هک
-===================================== */
-
-secretBtn.addEventListener("click", () => {
-
-    home.style.display = "none";
-
-    hackPage.style.display = "block";
-
-    startMatrix();
-
-    startHack();
-
-});
-
-
-/* =====================================
-   سیستم هک
-===================================== */
-
-function startHack() {
-
-    let value = 0;
-
-    const statuses = [
-
-        "INITIALIZING...",
-        "CONNECTING TO SERVER...",
-        "BYPASSING FIREWALL...",
-        "SEARCHING DATABASE...",
-        "ACCESSING SYSTEM...",
-        "DOWNLOADING FILES...",
-        "DECRYPTING DATA...",
-        "ACCESS GRANTED..."
-    ];
-
-
-    const interval = setInterval(() => {
-
-        value++;
-
-        percent.textContent =
-            value + "%";
-
-        progress.style.width =
-            value + "%";
-
-
-        const index =
-            Math.floor(
-                value /
-                (100 / statuses.length)
-            );
-
-        status.textContent =
-            statuses[
-                Math.min(
-                    index,
-                    statuses.length - 1
-                )
-            ];
-
-
-        beep();
-
-
-        if (value >= 100) {
-
-            clearInterval(interval);
-
-            setTimeout(showHacked, 700);
-
-        }
-
-    }, 55);
-
-}
-
-
-/* =====================================
-   نمایش YOU HACKED
-===================================== */
-
-function showHacked() {
-
-    document.body.classList.add("shake");
-
-    hacked.style.display = "flex";
-
-    redFlash.style.opacity = "0.35";
-
-    setTimeout(() => {
-
-        redFlash.style.opacity = "0";
-
-    }, 150);
-
-
-    setTimeout(() => {
-
-        joke.style.display = "block";
-
-    }, 1800);
-
-
-    setTimeout(() => {
-
-        back.style.display = "block";
-
-    }, 2800);
-
-}
-
-
-/* =====================================
-   دکمه برگشت
-===================================== */
-
-back.addEventListener("click", () => {
-
-    location.reload();
-
-});
-
-
-/* =====================================
-   MATRIX
-===================================== */
-
-function startMatrix() {
-
-    const canvas =
-        document.getElementById("matrix");
-
-    const ctx =
-        canvas.getContext("2d");
-
-
-    canvas.width =
-        window.innerWidth;
-
-    canvas.height =
-        window.innerHeight;
-
-
-    const characters =
-        "010101010101010101010101010101010101010101";
-
-
-    const fontSize = 18;
-
-    const columns =
-        Math.floor(
-            canvas.width / fontSize
-        );
-
-
-    const drops = [];
-
-
-    for (
-        let i = 0;
-        i < columns;
-        i++
-    ) {
-
-        drops[i] =
-            Math.random() *
-            -100;
 
     }
 
-
-    function drawMatrix() {
-
-        ctx.fillStyle =
-            "rgba(0,0,0,0.07)";
-
-        ctx.fillRect(
-            0,
-            0,
-            canvas.width,
-            canvas.height
-        );
-
-
-        ctx.fillStyle =
-            "#00ff41";
-
-        ctx.font =
-            fontSize + "px monospace";
-
-
-        for (
-            let i = 0;
-            i < drops.length;
-            i++
-        ) {
-
-            const character =
-                characters[
-                    Math.floor(
-                        Math.random() *
-                        characters.length
-                    )
-                ];
-
-
-            ctx.fillText(
-                character,
-                i * fontSize,
-                drops[i] * fontSize
-            );
-
-
-            if (
-                drops[i] * fontSize >
-                canvas.height
-                &&
-                Math.random() > 0.975
-            ) {
-
-                drops[i] = 0;
-
-            }
-
-
-            drops[i]++;
-
-        }
-
-    }
-
-
-    setInterval(
-        drawMatrix,
-        35
-    );
-
-
-    window.addEventListener(
-        "resize",
-        () => {
-
-            canvas.width =
-                window.innerWidth;
-
-            canvas.height =
-                window.innerHeight;
-
-        }
-    );
+    catch(e) {}
 
 }
 
